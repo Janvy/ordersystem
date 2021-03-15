@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: ordersystem
+  rabbitmq:
+    host: 168.168.168.114
+    port: 5672
+    username: rabbit
+    password: 123456
+    virtual-host: test #工作空间（命名空间）
+    listener:
+      simple:
+        acknowledge-mode: manual
+    publisher-returns: true
+    publisher-confirm-type: correlated
+  redis:
+    host: 168.168.168.111
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 1
+    timeout: 30000
+    database: 0
+
+  mail:
+    host: smtp.qq.com
+    port: 465
+    password: cdxsctrqperdbiic
+    username: 374690078@qq.com
+    from: 374690078@qq.com
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+  datasource:
+    url: jdbc:mysql://192.168.168.242:3306/sogal_rs_db?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+    username: hemp
+    password: hemphemp
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 10
+    minIdle: 10
+    maxActive: 100
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+  mybatis:
+    mapperLocations: classpath*:mapper/*.xml
